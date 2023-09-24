@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class SignUp extends AppCompatActivity {
     private void SetupLoginClickableSpan()
     {
 
-        TextView loginTextView = (TextView) findViewById(R.id.login_here);
+        TextView loginTextView = findViewById(R.id.login_here);
         String loginText = "Already have an account? Login";
         SpannableString loginSpan = new SpannableString(loginText);
 
@@ -45,8 +46,10 @@ public class SignUp extends AppCompatActivity {
             }
         };
 
-        loginSpan.setSpan(loginClickableSpan, 25, 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        loginSpan.setSpan(loginClickableSpan, 25, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         loginTextView.setText(loginSpan);
+        loginTextView.setClickable(true);
+        loginTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
 }

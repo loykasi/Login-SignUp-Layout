@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class Login extends AppCompatActivity {
 
     private void SetupSignUpClickableSpan()
     {
-        TextView signupTextView = (TextView) findViewById(R.id.sign_up_here);
+        TextView signupTextView = findViewById(R.id.sign_up_here);
         String signupText = "Don't have an account? Sign up";
         SpannableString signupSpan = new SpannableString(signupText);
 
@@ -44,8 +45,10 @@ public class Login extends AppCompatActivity {
             }
         };
 
-        signupSpan.setSpan(signupClickableSpan, 23, 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        signupSpan.setSpan(signupClickableSpan, 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         signupTextView.setText(signupSpan);
+        signupTextView.setClickable(true);
+        signupTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
 }
